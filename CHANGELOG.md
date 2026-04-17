@@ -4,6 +4,19 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.2.0...v2.3.0) (2026-04-17)
+
+
+### Features
+
+* add Auto-bulldoze feature to gradually replace non-theme buildings with themed ones ([860c5a1](https://github.com/roberto-naharro/BuildingThemes2/commit/860c5a1f7c4fe7024749fd6f1babde01d06df961))
+* enhance AutoBulldoze functionality with improved logging and reset mechanism ([ec59f40](https://github.com/roberto-naharro/BuildingThemes2/commit/ec59f40c0b670af5fd58509f749b0696cc9fb145))
+
+
+### Bug Fixes
+
+* update last-release-sha in release-please configuration ([80c7041](https://github.com/roberto-naharro/BuildingThemes2/commit/80c70418053c190159f541fb6f388acd325a4bf0))
+
 ## [2.2.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.1.0...v2.2.0) (2026-04-17)
 
 
