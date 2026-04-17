@@ -4,6 +4,14 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.1...v2.4.2) (2026-04-17)
+
+
+### Bug Fixes
+
+* remove obsolete cascade level behavior and update related logic ([2a8ff49](https://github.com/roberto-naharro/BuildingThemes2/commit/2a8ff497a8a7f24df20e0457d6b3322012457987))
+* update docs ([78a9a50](https://github.com/roberto-naharro/BuildingThemes2/commit/78a9a50d9b58034dcc52932f551bb39c47495ad9))
+
 ## [2.4.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.0...v2.4.1) (2026-04-17)
 
 
