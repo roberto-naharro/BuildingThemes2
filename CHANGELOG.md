@@ -4,6 +4,15 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.0...v2.4.1) (2026-04-17)
+
+
+### Bug Fixes
+
+* migrate legacy spawn rate scale from 1–1000 to 1–100 ([db29379](https://github.com/roberto-naharro/BuildingThemes2/commit/db2937949b6188dec4d0dd7d878728914d245c1c))
+* prevent null reference when submitting spawn rate in building options ([ab90a5a](https://github.com/roberto-naharro/BuildingThemes2/commit/ab90a5a9e212023bcb1b23b00fb37e80dc3520ae))
+* remove numericalOnly restriction from spawn rate text field ([6307c4f](https://github.com/roberto-naharro/BuildingThemes2/commit/6307c4fc4e1550a2f6184960141f81b6f87be946))
+
 ## [2.4.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.3.0...v2.4.0) (2026-04-17)
 
 
