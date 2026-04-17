@@ -15,6 +15,7 @@ namespace BuildingThemes.GUI
         private UICheckBox m_blacklistCheck;
         private UIDropDown m_levelDropdown;
         private UIDropDown m_missingDropdown;
+        private UICheckBox m_autoBulldozeCheck;
 
         // Prevents Update() sync from re-firing eventChanged callbacks
         private bool _updating;
@@ -147,6 +148,7 @@ namespace BuildingThemes.GUI
             m_missingDropdown.width = CW;
             m_missingDropdown.size = new Vector2(CW, DROP_H);
             m_missingDropdown.relativePosition = new Vector3(X, y);
+            m_missingDropdown.listPosition = UIDropDown.PopupListPosition.Above;
             m_missingDropdown.items = new string[] {
                 "Skip — theme-only, slots may be sparse",
                 "Fill with vanilla — supplement missing slots",
@@ -157,6 +159,24 @@ namespace BuildingThemes.GUI
                 "Fill with vanilla: missing building slots are supplemented with vanilla buildings of the same type\n" +
                 "Fall back to vanilla: if a slot is sparser than vanilla, that entire slot uses vanilla buildings";
             y += DROP_H + ROW_GAP;
+
+            // ── Auto-bulldoze ─────────────────────────────────────────
+            m_autoBulldozeCheck = ThemePolicyTab.CreateCheckBox(this);
+            m_autoBulldozeCheck.width = CW;
+            m_autoBulldozeCheck.relativePosition = new Vector3(X, y);
+            m_autoBulldozeCheck.text = "Auto-remove non-theme buildings";
+            m_autoBulldozeCheck.tooltip =
+                "Gradually demolishes existing buildings in this district that are not\n" +
+                "part of any active theme. Only affects growable residential, commercial,\n" +
+                "industrial, and office buildings — service buildings are never touched.\n" +
+                "Has no effect when 'Allow buildings not in any theme' is enabled.";
+            y += CHK_H + ROW_GAP;
+
+            m_autoBulldozeCheck.eventCheckChanged += (c, val) =>
+            {
+                if (_updating) return;
+                BuildingThemesManager.instance.SetDistrictAutoBulldoze(GetDistrictId(), val);
+            };
 
             // ── Spawn Diagnostics ─────────────────────────────────────
             UIButton diagnosticsBtn = UIUtils.CreateButton(this);
@@ -227,6 +247,17 @@ namespace BuildingThemes.GUI
                         if (m_missingDropdown.selectedIndex != val)
                             m_missingDropdown.selectedIndex = val;
                     }
+                }
+
+                if (m_autoBulldozeCheck != null)
+                {
+                    bool effectiveBlacklist = BuildingThemesManager.instance.IsBlacklistModeEnabled(districtId);
+                    // Auto-bulldoze only makes sense when theme management is on and blacklist mode is off
+                    m_autoBulldozeCheck.isEnabled = managed && !effectiveBlacklist;
+                    m_autoBulldozeCheck.opacity = (managed && !effectiveBlacklist) ? 1f : 0.5f;
+                    bool bulldoze = BuildingThemesManager.instance.GetDistrictAutoBulldoze(districtId);
+                    if (m_autoBulldozeCheck.isChecked != bulldoze)
+                        m_autoBulldozeCheck.isChecked = bulldoze;
                 }
             }
             finally { _updating = false; }

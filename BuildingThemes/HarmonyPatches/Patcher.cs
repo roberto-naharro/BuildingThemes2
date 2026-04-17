@@ -20,10 +20,12 @@ namespace BuildingThemes.HarmonyPatches
             GetUpgradeInfoPatch.Deploy();
             PoliciesPanelPatches.Deploy();
             OnPoliciesClickPatch.Deploy();
+            AutoBulldozePatch.Deploy();
         }
 
         public static void UnpatchAll()
         {
+            AutoBulldozePatch.Revert();
             OnPoliciesClickPatch.Revert();
             PoliciesPanelPatches.Revert();
             GetUpgradeInfoPatch.Revert();

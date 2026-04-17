@@ -87,6 +87,21 @@ namespace BuildingThemes
             CompileDistrictThemes(districtId);
         }
 
+        public bool GetDistrictAutoBulldoze(byte districtId)
+        {
+            var info = districtThemeInfos[districtId];
+            if (info != null) return info.autoBulldoze;
+            if (districtId != 0) { var c = districtThemeInfos[0]; if (c != null) return c.autoBulldoze; }
+            return false;
+        }
+
+        public void SetDistrictAutoBulldoze(byte districtId, bool enabled)
+        {
+            var info = districtThemeInfos[districtId];
+            if (info == null || info.autoBulldoze == enabled) return;
+            info.autoBulldoze = enabled;
+        }
+
         private class DistrictThemeInfo
         {
             public bool blacklistMode = false;
@@ -94,6 +109,9 @@ namespace BuildingThemes
             // Per-district behavior settings (default to global at creation time)
             public MissingAssetMode missingAssetMode = MissingAssetMode.FillWithVanilla;
             public EmptyLevelBehavior emptyLevelBehavior = EmptyLevelBehavior.VanillaFallback;
+
+            /// <summary>When true, buildings not belonging to any active theme are gradually demolished.</summary>
+            public bool autoBulldoze = false;
 
             public readonly HashSet<Configuration.Theme> themes = new HashSet<Configuration.Theme>();
 
@@ -847,6 +865,35 @@ namespace BuildingThemes
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns true if the building at <paramref name="buildingId"/> is a valid spawn candidate
+        /// for the active themes in <paramref name="districtId"/>.
+        /// Always returns true for non-growable buildings (services, unique, etc.).
+        /// </summary>
+        public bool IsBuildingValidForDistrict(ushort buildingId, byte districtId)
+        {
+            var building = BuildingManager.instance.m_buildings.m_buffer[buildingId];
+            var info = building.Info;
+            if (info == null) return true;
+
+            // Only enforce themes on auto-growable zone buildings
+            if (info.m_placementStyle != ItemClass.Placement.Automatic) return true;
+            if (ItemClass.GetPrivateServiceIndex(info.m_class.m_service) == -1) return true;
+
+            int areaIndex = GetAreaIndex(
+                info.m_class.m_service, info.m_class.m_subService, info.m_class.m_level,
+                info.m_cellWidth, info.m_cellLength, info.m_zoningMode);
+
+            var valid = GetAreaBuildings(districtId, areaIndex);
+            if (valid == null || valid.m_size == 0) return false;
+
+            ushort prefab = (ushort)info.m_prefabDataIndex;
+            for (int i = 0; i < valid.m_size; i++)
+                if (valid.m_buffer[i] == prefab) return true;
+
+            return false;
         }
 
         public static int GetAreaIndex(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, int width, int length, BuildingInfo.ZoningMode zoningMode)

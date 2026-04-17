@@ -153,7 +153,8 @@ namespace BuildingThemes
                         blacklistMode = themesManager.IsBlacklistModeEnabled(i),
                         themes = themesNames,
                         missingAssetMode  = (int)themesManager.GetDistrictMissingAssetMode(i),
-                        emptyLevelBehavior = (int)themesManager.GetDistrictEmptyLevelBehavior(i)
+                        emptyLevelBehavior = (int)themesManager.GetDistrictEmptyLevelBehavior(i),
+                        autoBulldoze = themesManager.GetDistrictAutoBulldoze(i)
                     });
                     if (Debugger.Enabled)
                     {
@@ -234,6 +235,9 @@ namespace BuildingThemes
                 if (configuration.version >= 2)
                     buildingThemesManager.RestoreDistrictBehavior(district.id, district.missingAssetMode, district.emptyLevelBehavior);
 
+                // autoBulldoze defaults to false for old saves (field missing = XML default)
+                buildingThemesManager.SetDistrictAutoBulldoze(district.id, district.autoBulldoze);
+
                 if (Debugger.Enabled)
                 {
                     var themeNames = string.Join(", ", System.Array.ConvertAll(district.themes ?? new string[0], t => t));
@@ -260,6 +264,7 @@ namespace BuildingThemes
             // -1 = not saved (old save / version < 2); >= 0 = enum ordinal.
             public int missingAssetMode = -1;
             public int emptyLevelBehavior = -1;
+            public bool autoBulldoze = false;
         }
 
         public List<District> Districts = new List<District>();
