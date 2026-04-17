@@ -4,6 +4,19 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.3.0...v2.4.0) (2026-04-17)
+
+
+### Features
+
+* update spawn rate handling and diagnostics for building themes ([c007002](https://github.com/roberto-naharro/BuildingThemes2/commit/c007002fec83e152931890863cec431f75e6b1bd))
+
+
+### Bug Fixes
+
+* add Steam BBCode conversion for release notes in workshop deployment ([b551877](https://github.com/roberto-naharro/BuildingThemes2/commit/b551877e9a221a7ca01ecf8e479283b0e55b8e15))
+* implement Steam BBCode conversion and VDF generation for workshop deployment ([eca65f9](https://github.com/roberto-naharro/BuildingThemes2/commit/eca65f950e4d1520fe15062a51418b4cf2189975))
+
 ## [2.3.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.2.0...v2.3.0) (2026-04-17)
 
 
