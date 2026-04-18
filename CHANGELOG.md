@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.4](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.3...v2.4.4) (2026-04-18)
+
+
+### Bug Fixes
+
+* improve comments and documentation for footprint coverage and auto-bulldoze behavior ([840afbc](https://github.com/roberto-naharro/BuildingThemes2/commit/840afbcb89a73edc1549c598778865ef96a92f69))
+
 ## [2.4.3](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.2...v2.4.3) (2026-04-18)
 
 
