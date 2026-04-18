@@ -4,6 +4,14 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.3](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.2...v2.4.3) (2026-04-18)
+
+
+### Bug Fixes
+
+* enhance theme validation logic for unconfigured footprints ([9b1f791](https://github.com/roberto-naharro/BuildingThemes2/commit/9b1f7919214d10cf312ef161b6a85720c7fe2cce))
+* update README with footprint coverage and vanilla building behavior details ([bc56c01](https://github.com/roberto-naharro/BuildingThemes2/commit/bc56c01b70b3fbe0a14ffda56b3cf43057dfe12a))
+
 ## [2.4.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.1...v2.4.2) (2026-04-17)
 
 
