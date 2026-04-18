@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.5](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.4...v2.4.5) (2026-04-18)
+
+
+### Bug Fixes
+
+* compute spawn position for zone types based on size preference ([eb420d2](https://github.com/roberto-naharro/BuildingThemes2/commit/eb420d28503b4244a4a24b308dbd826605788360))
+
 ## [2.4.4](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.3...v2.4.4) (2026-04-18)
 
 
