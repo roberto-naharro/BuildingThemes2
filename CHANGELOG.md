@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.7](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.6...v2.4.7) (2026-04-19)
+
+
+### Bug Fixes
+
+* add TutorialUITag to Themes tab to prevent crashes during tab management ([ad63679](https://github.com/roberto-naharro/BuildingThemes2/commit/ad63679f048f8b66a55da6c62e0c63987771da21))
+
 ## [2.4.6](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.5...v2.4.6) (2026-04-19)
 
 
