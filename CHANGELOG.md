@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.6](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.5...v2.4.6) (2026-04-19)
+
+
+### Bug Fixes
+
+* add cleanup method for UIDistrictOptionsPanel and invoke during level unloading ([e5f7bb1](https://github.com/roberto-naharro/BuildingThemes2/commit/e5f7bb1f8282606e515602eeaf01e195f6ca22cb))
+
 ## [2.4.5](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.4...v2.4.5) (2026-04-18)
 
 
