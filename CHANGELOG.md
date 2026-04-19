@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.7...v2.5.0) (2026-04-19)
+
+
+### Features
+
+* add theme renaming and import functionality from District Styles Plus ([c6a583a](https://github.com/roberto-naharro/BuildingThemes2/commit/c6a583a921c50058fd316acef812e656e1403500))
+
 ## [2.4.7](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.6...v2.4.7) (2026-04-19)
 
 
