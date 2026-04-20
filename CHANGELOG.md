@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.6.0...v2.7.0) (2026-04-20)
+
+
+### Features
+
+* add preference for electricity in district options and update serialization ([0aa8218](https://github.com/roberto-naharro/BuildingThemes2/commit/0aa8218058d18e8f6dd48bda161a21eff2e9edd2))
+
 ## [2.6.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.5.0...v2.6.0) (2026-04-20)
 
 
