@@ -4,6 +4,18 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.5.0...v2.6.0) (2026-04-20)
+
+
+### Features
+
+* DSP-inspired spawning improvements and Theme Manager UX ([3813bcf](https://github.com/roberto-naharro/BuildingThemes2/commit/3813bcfbf524341c1a5b72256d220b431194ddbb))
+
+
+### Bug Fixes
+
+* update VDF generation to use descriptionfile and improve escaping ([7e9c970](https://github.com/roberto-naharro/BuildingThemes2/commit/7e9c970700f17a8471b3e576cfd54ef1806f54bc))
+
 ## [2.5.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.4.7...v2.5.0) (2026-04-19)
 
 
