@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.7.0...v2.7.1) (2026-04-22)
+
+
+### Bug Fixes
+
+* **compat:** defer district-style import to fix empty themes with DSP installed ([bd10b29](https://github.com/roberto-naharro/BuildingThemes2/commit/bd10b29982f5dce9b47bd14a04db3a73dd51fae8))
+
 ## [2.7.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.6.0...v2.7.0) (2026-04-20)
 
 
