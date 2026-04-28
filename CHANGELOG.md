@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.7.2...v2.8.0) (2026-04-28)
+
+
+### Features
+
+* **ui:** add theme copy functionality and update UI layout ([2cedeb9](https://github.com/roberto-naharro/BuildingThemes2/commit/2cedeb9f63fbc5d9bbc9baccbfbe9f0e5d3e3dd9))
+
 ## [2.7.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.7.1...v2.7.2) (2026-04-23)
 
 
