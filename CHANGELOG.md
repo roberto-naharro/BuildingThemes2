@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.8.0...v2.8.1) (2026-05-03)
+
+
+### Bug Fixes
+
+* **patch:** implement abandoned-building replacement logic and position tracking ([552567a](https://github.com/roberto-naharro/BuildingThemes2/commit/552567a0a8784178f55a88943b28e3f6dc3d5d5a))
+
 ## [2.8.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.7.2...v2.8.0) (2026-04-28)
 
 
