@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.8.1...v2.9.0) (2026-05-03)
+
+
+### Features
+
+* **deploy:** inject version into AssemblyInfo for release builds ([0a6a009](https://github.com/roberto-naharro/BuildingThemes2/commit/0a6a0090693a0d87720a1c8a828435ea94f153e2))
+
 ## [2.8.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.8.0...v2.8.1) (2026-05-03)
 
 
