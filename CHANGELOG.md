@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.10.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.9.0...v2.10.0) (2026-05-04)
+
+
+### Features
+
+* build mod in CI using committed game reference DLLs ([6b04657](https://github.com/roberto-naharro/BuildingThemes2/commit/6b046579cecf6a0cf2595d76c7c420ecf6276aed))
+
 ## [2.9.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.8.1...v2.9.0) (2026-05-03)
 
 
