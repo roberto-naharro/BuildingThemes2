@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.10.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.10.0...v2.10.1) (2026-05-04)
+
+
+### Bug Fixes
+
+* **compat:** expose s_intentionalNull for strict-mode integration ([82a4333](https://github.com/roberto-naharro/BuildingThemes2/commit/82a4333d86c7d798721cbd151dd00be404b5d112))
+
 ## [2.10.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.9.0...v2.10.0) (2026-05-04)
 
 
