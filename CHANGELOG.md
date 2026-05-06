@@ -4,6 +4,18 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.10.1...v2.11.0) (2026-05-06)
+
+
+### Features
+
+* **theme-filter:** add theme membership filter to building filter UI ([d50a8c7](https://github.com/roberto-naharro/BuildingThemes2/commit/d50a8c713445bb64f76cc553fa91ce940cf229b4))
+
+
+### Bug Fixes
+
+* **auto-bulldoze:** optimize Postfix method to run once per frame ([edf8b9c](https://github.com/roberto-naharro/BuildingThemes2/commit/edf8b9ced8b0e6a4eabb9c3977014d29e2844bfe))
+
 ## [2.10.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.10.0...v2.10.1) (2026-05-04)
 
 
