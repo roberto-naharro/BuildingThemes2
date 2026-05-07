@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.0...v2.11.1) (2026-05-07)
+
+
+### Bug Fixes
+
+* **BuildingThemesManager:** add guard for areaIndex to prevent out-of-bounds access ([4314ffb](https://github.com/roberto-naharro/BuildingThemes2/commit/4314ffb793a036056be0f0cb4b959e880477bcab))
+
 ## [2.11.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.10.1...v2.11.0) (2026-05-06)
 
 
