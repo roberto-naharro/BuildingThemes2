@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.1...v2.11.2) (2026-05-09)
+
+
+### Bug Fixes
+
+* **spawn:** defer to vanilla when no BT2 theme is active for a district ([41377f3](https://github.com/roberto-naharro/BuildingThemes2/commit/41377f3a0d3fca44ca854735a8bec6867438b3cd))
+
 ## [2.11.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.0...v2.11.1) (2026-05-07)
 
 
