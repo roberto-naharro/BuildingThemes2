@@ -4,6 +4,14 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.3](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.2...v2.11.3) (2026-05-21)
+
+
+### Bug Fixes
+
+* **config:** show real path in XML error and don't mask write failures as corrupt XML ([02c08f5](https://github.com/roberto-naharro/BuildingThemes2/commit/02c08f5e12e482d3af607b28b04e13652d3ada2c))
+* **ThemeManager:** enforce read-only for built-in themes; fix XML path/SaveConfig errors; deploy XML ([86e5b54](https://github.com/roberto-naharro/BuildingThemes2/commit/86e5b541cbaa67c90b4dd7dcba17428c044b99cf))
+
 ## [2.11.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.1...v2.11.2) (2026-05-09)
 
 
