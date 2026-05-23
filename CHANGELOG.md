@@ -4,6 +4,26 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.12.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.4...v2.12.0) (2026-05-23)
+
+
+### Features
+
+* **dev:** add environment dump tool; fix OnEnabled crash ([0a45035](https://github.com/roberto-naharro/BuildingThemes2/commit/0a4503526049db5a499644db09ba5cc836c13aff))
+* **theme-manager:** label DistrictStyle-only buildings in the origin line ([1a93c6d](https://github.com/roberto-naharro/BuildingThemes2/commit/1a93c6dbe611de4dd6a3c6eb427954d45c7e9090))
+* **theme-manager:** show DLC origin under each building name ([d4eed17](https://github.com/roberto-naharro/BuildingThemes2/commit/d4eed17f419e9416a40f8b24dd89a667d9de8506))
+* **theme-manager:** single green/red badge driven by actual building content ([2336e3f](https://github.com/roberto-naharro/BuildingThemes2/commit/2336e3ffcee73ef365707e41ac09790d7f48f733))
+* **themes:** mark European theme as [DLC] ([0b5914a](https://github.com/roberto-naharro/BuildingThemes2/commit/0b5914ae9b73a3ffec6085fc45702aa7012a498b))
+* **themes:** replace stale bundled themes with single-source env themes ([89bc82d](https://github.com/roberto-naharro/BuildingThemes2/commit/89bc82de6ed9dc5e8736dbc411650d2e7fdf7c19))
+
+
+### Bug Fixes
+
+* **locale:** consolidate DLC name resolution into DlcNames; fix missing keys ([0447782](https://github.com/roberto-naharro/BuildingThemes2/commit/0447782c414dcd66569b5e2a673ed18d86400cfe))
+* **spawn:** restore exact vanilla parity when no theme is engaged ([2c42477](https://github.com/roberto-naharro/BuildingThemes2/commit/2c42477f916a68a6a756a267350007d8df179a76))
+* **theme-manager:** treat DistrictStyle-only buildings as DLC for badge ([99a8a21](https://github.com/roberto-naharro/BuildingThemes2/commit/99a8a215e9b4484c0aaa890ff69b61a49b018dae))
+* **themes:** drop unloaded prefabs from bundled env theme imports ([d911969](https://github.com/roberto-naharro/BuildingThemes2/commit/d911969916a3d7305b36b78ce95e220f5ea9d1cb))
+
 ## [2.11.4](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.3...v2.11.4) (2026-05-21)
 
 
