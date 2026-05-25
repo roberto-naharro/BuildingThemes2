@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.12.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.12.0...v2.12.1) (2026-05-25)
+
+
+### Bug Fixes
+
+* **configuration:** improve error handling during configuration loading ([17a1fff](https://github.com/roberto-naharro/BuildingThemes2/commit/17a1fffb5e9b95eabca42cb051549f09224636e4))
+
 ## [2.12.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.11.4...v2.12.0) (2026-05-23)
 
 
