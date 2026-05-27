@@ -4,6 +4,20 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.13.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.12.2...v2.13.0) (2026-05-27)
+
+
+### Features
+
+* **districts:** add specialization enforcement for auto-bulldoze functionality ([9b7ef44](https://github.com/roberto-naharro/BuildingThemes2/commit/9b7ef445a43313c01efcf2a94986b54aa0e4c539))
+* **filter:** add wall-to-wall building filter and detection logic ([91b1c62](https://github.com/roberto-naharro/BuildingThemes2/commit/91b1c622c0e3bc171f90d90cb806e58e53525a6b))
+* **theme:** enhance wall detection logic with Y-range validation ([e61ee49](https://github.com/roberto-naharro/BuildingThemes2/commit/e61ee4941b0d7168ead1413302d65ad533f9b9df))
+
+
+### Bug Fixes
+
+* **theme:** reject multi-pack steam prefix matches in spawn pool ([07173c2](https://github.com/roberto-naharro/BuildingThemes2/commit/07173c23e69a5ae1287fb4694045262f210bde46))
+
 ## [2.12.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.12.1...v2.12.2) (2026-05-25)
 
 
