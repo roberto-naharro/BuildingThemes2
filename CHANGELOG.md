@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.14.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.13.0...v2.14.0) (2026-05-28)
+
+
+### Features
+
+* **districts:** add preference for clustering buildings against existing ones ([f386d87](https://github.com/roberto-naharro/BuildingThemes2/commit/f386d87ca4d9920581049d3883754476c1f02e48))
+
 ## [2.13.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.12.2...v2.13.0) (2026-05-27)
 
 
