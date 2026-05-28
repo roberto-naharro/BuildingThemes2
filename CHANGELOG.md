@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.14.0...v2.15.0) (2026-05-28)
+
+
+### Features
+
+* **theme:** enhance theme management with local theme distinction and tagging ([bd2e9cd](https://github.com/roberto-naharro/BuildingThemes2/commit/bd2e9cd0d64f62f972498f4e439ae2e9f08f35b1))
+
 ## [2.14.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.13.0...v2.14.0) (2026-05-28)
 
 
