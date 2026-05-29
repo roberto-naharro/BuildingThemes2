@@ -4,6 +4,21 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.16.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.15.0...v2.16.0) (2026-05-29)
+
+
+### Features
+
+* **districts:** wall-to-wall corner clustering with road-overlap safety ([121ef87](https://github.com/roberto-naharro/BuildingThemes2/commit/121ef87de3c5da7b45458e03fd5d46dfe9590587))
+
+
+### Bug Fixes
+
+* **building:** remove Steam-prefix fallback for building lookup to ensure exact-name matching ([8ea8e49](https://github.com/roberto-naharro/BuildingThemes2/commit/8ea8e4965ca24025f4ce7bf02585fb78fd483877))
+* **docs:** enhance description of clustering behavior for new buildings ([7a620ae](https://github.com/roberto-naharro/BuildingThemes2/commit/7a620aea164f634f4d1596c2aaefa4c968c66eac))
+* **docs:** update and correct README.md ([917660e](https://github.com/roberto-naharro/BuildingThemes2/commit/917660e9248c4e07875c82090be864edeabdafed))
+* **zone:** refine size preference handling for straight lots and exclude corner lots ([3c47fc3](https://github.com/roberto-naharro/BuildingThemes2/commit/3c47fc36f2e3891f25ba70889fc6170c3086148d))
+
 ## [2.15.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.14.0...v2.15.0) (2026-05-28)
 
 
