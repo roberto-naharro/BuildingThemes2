@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.17.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.16.0...v2.17.0) (2026-06-07)
+
+
+### Features
+
+* **building:** allow building-extension mods to adjust service and level before selection ([691232d](https://github.com/roberto-naharro/BuildingThemes2/commit/691232d06823551c8c41dd06576f606393824759))
+
 ## [2.16.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.15.0...v2.16.0) (2026-05-29)
 
 
