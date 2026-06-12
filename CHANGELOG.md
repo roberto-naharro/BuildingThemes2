@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.19.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.18.0...v2.19.0) (2026-06-12)
+
+
+### Features
+
+* add localization support and translation framework ([019942e](https://github.com/roberto-naharro/BuildingThemes2/commit/019942ec9d955e4a3724f2b39e50d2f0dc1cb46e))
+
 ## [2.18.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.17.0...v2.18.0) (2026-06-12)
 
 
