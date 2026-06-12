@@ -4,6 +4,14 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.18.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.17.0...v2.18.0) (2026-06-12)
+
+
+### Features
+
+* **building:** add option to mark straight-zoned buildings for corner lots ([971f643](https://github.com/roberto-naharro/BuildingThemes2/commit/971f643135a638d627b9b6af2b1241b8d2bdc3c0))
+* **ui:** add corner zoning label to building preview for better asset identification ([d4fee57](https://github.com/roberto-naharro/BuildingThemes2/commit/d4fee57de0a3cea845291db1ac098450f73377ea))
+
 ## [2.17.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.16.0...v2.17.0) (2026-06-07)
 
 
