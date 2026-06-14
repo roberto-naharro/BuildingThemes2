@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.19.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.19.0...v2.19.1) (2026-06-14)
+
+
+### Bug Fixes
+
+* ship Locale folder in Workshop build (was showing raw localization keys) ([038af20](https://github.com/roberto-naharro/BuildingThemes2/commit/038af2060b571e85dfddafb195aabc42f0f59442))
+
 ## [2.19.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.18.0...v2.19.0) (2026-06-12)
 
 
