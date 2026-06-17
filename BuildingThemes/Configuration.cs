@@ -389,8 +389,9 @@ namespace BuildingThemes
             }
             catch (Exception e)
             {
-                Debugger.Log("Couldn't create configuration file at \"" + Directory.GetCurrentDirectory() + "\"");
-                throw e;
+                Debugger.LogError("Couldn't write configuration file to \"" + Path.GetFullPath(filename) +
+                    "\" (working dir: " + Directory.GetCurrentDirectory() + "): " + e.GetType().Name + " — " + e.Message);
+                throw;
             }
         }
     }

@@ -293,20 +293,33 @@ namespace BuildingThemes
             {
                 if (_configuration == null)
                 {
+                    string fullPath;
+                    try { fullPath = Path.GetFullPath(userConfigPath); }
+                    catch { fullPath = userConfigPath; }
+
                     try
                     {
                         _configuration = Configuration.Deserialize(userConfigPath);
                         Debugger.xmlCorrupt = false;
 
-                        if (Debugger.Enabled)
+                        // Always-on so we can compare the LOAD path/count against the SAVE path
+                        // logged by SaveConfig — a mismatch explains "my theme didn't save".
+                        if (_configuration != null)
                         {
-                            Debugger.Log("User Configuration loaded.");
+                            Debugger.LogAlways("[BT2:Persistence] Loaded " + _configuration.themes.Count +
+                                " theme(s) from: " + fullPath);
+                        }
+                        else
+                        {
+                            Debugger.LogAlways("[BT2:Persistence] No existing config file at: " + fullPath +
+                                " — a new one will be created here on the first save.");
                         }
                     }
                     catch (Exception e)
                     {
                         Debugger.xmlCorrupt = true;
-                        Debugger.LogError("Configuration load failed — check Player.log for details.");
+                        Debugger.LogError("[BT2:Persistence] Configuration load FAILED from: " + fullPath +
+                            " — the file may be corrupt. Check Player.log for details.");
                         Debugger.LogException(e);
                     }
 
@@ -316,8 +329,7 @@ namespace BuildingThemes
                         try { SaveConfig(); }
                         catch (Exception e)
                         {
-                            Debugger.LogError("Could not create BuildingThemes.xml at: " +
-                                Path.GetFullPath(userConfigPath));
+                            Debugger.LogError("Could not create BuildingThemes.xml at: " + fullPath);
                             Debugger.LogException(e);
                         }
                     }
@@ -329,7 +341,30 @@ namespace BuildingThemes
 
         internal void SaveConfig()
         {
-            if (_configuration != null) Configuration.Serialize(userConfigPath, _configuration);
+            if (_configuration == null) return;
+
+            // Resolve the absolute target so the log shows exactly where the file goes.
+            // userConfigPath is relative, so it depends on the game's working directory.
+            string fullPath;
+            try { fullPath = Path.GetFullPath(userConfigPath); }
+            catch { fullPath = userConfigPath; }
+
+            try
+            {
+                Configuration.Serialize(userConfigPath, _configuration);
+                Debugger.LogAlways("[BT2:Persistence] Saved " + _configuration.themes.Count +
+                    " theme(s) to: " + fullPath);
+            }
+            catch (Exception e)
+            {
+                // Never let a save failure propagate into the UI update loop. Log it loudly
+                // (always-on) so affected users can share their log: this is the smoking gun
+                // for "my custom theme disappears after restarting the game".
+                Debugger.LogError("[BT2:Persistence] FAILED to save themes to: " + fullPath +
+                    " — your custom themes will be lost on reload. Most likely the game's " +
+                    "working directory is not writable. Exception follows.");
+                Debugger.LogException(e);
+            }
         }
 
         // Maps prefab name -> themes imported from a built-in DistrictStyle that contain it.

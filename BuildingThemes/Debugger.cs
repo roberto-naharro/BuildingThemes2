@@ -69,6 +69,14 @@ namespace BuildingThemes
                 Debug.Log(Prefix + message);
         }
 
+        // Always emitted, regardless of the Enabled toggle. Use sparingly — only for
+        // diagnostics we must collect from users who don't have debug output turned on
+        // (e.g. the theme save/load path, to investigate "my theme didn't save" reports).
+        public static void LogAlways(string message)
+        {
+            Debug.Log(Prefix + message);
+        }
+
         public static void LogFormat(string format, params object[] args)
         {
             Log(String.Format(format, args));
