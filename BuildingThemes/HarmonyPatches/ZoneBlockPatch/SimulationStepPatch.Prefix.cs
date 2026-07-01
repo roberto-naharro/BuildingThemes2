@@ -495,8 +495,10 @@ namespace BuildingThemes.HarmonyPatches.ZoneBlockPatch
                     num25_row   = num15 + num16 + 1;
                     if (BuildingThemesManager.instance.GetDistrictUseVanillaFootprint(district))
                     {
+                        // Keep the full lot depth so the building is stretched to fill it.
+                        // (width is unused on this straight, size-preference path — CreateBuilding
+                        // takes length only, and the corner flip that would read width never runs.)
                         length = depth_A;
-                        width  = width_A;
                     }
                     else
                     {

@@ -230,8 +230,10 @@ namespace BuildingThemes.GUI
             m_useVanillaFootprintCheck.text             = "Allow smaller building models to occupy larger lots (original game behavior)";
             m_useVanillaFootprintCheck.tooltip =
                 "When enabled: if no building model exactly matches the zone size, the\n" +
-                "game selects a slightly smaller model as a substitute — but the spawned\n" +
-                "building still occupies the full zone area. This is the original game logic.\n" +
+                "game selects a slightly smaller model as a substitute, and the building is\n" +
+                "stretched in depth to fill the lot (the extra rows become its yard). This is\n" +
+                "the original game logic. Note: only depth is filled this way — a narrower\n" +
+                "model in a wider lot still leaves a strip along the side.\n" +
                 "\n" +
                 "When disabled (default): the plot shrinks to the model's actual dimensions;\n" +
                 "the remaining space is left unoccupied and available for other buildings.\n" +
@@ -246,6 +248,7 @@ namespace BuildingThemes.GUI
             {
                 if (_updating) return;
                 byte districtId = GetDistrictId();
+                Debugger.LogFormat("[UserAction] district {0} — vanilla footprint {1}.", districtId, val ? "ENABLED" : "DISABLED");
                 BuildingThemesManager.instance.SetDistrictUseVanillaFootprint(districtId, val);
             };
             y += CHK_H + ROW_GAP;
