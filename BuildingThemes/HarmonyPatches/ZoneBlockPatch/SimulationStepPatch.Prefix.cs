@@ -493,11 +493,19 @@ namespace BuildingThemes.HarmonyPatches.ZoneBlockPatch
                 if (buildingInfo != null)
                 {
                     num25_row   = num15 + num16 + 1;
-                    length      = buildingInfo.m_cellLength;
-                    width       = buildingInfo.m_cellWidth;
+                    if (BuildingThemesManager.instance.GetDistrictUseVanillaFootprint(district))
+                    {
+                        length = depth_A;
+                        width  = width_A;
+                    }
+                    else
+                    {
+                        length = buildingInfo.m_cellLength;
+                        width  = buildingInfo.m_cellWidth;
+                        if (buildingInfo.m_cellWidth < width_A)
+                            num25_row += buildingInfo.m_cellWidth - width_A;
+                    }
                     zoningMode3 = BuildingInfo.ZoningMode.Straight;
-                    if (buildingInfo.m_cellWidth < width_A)
-                        num25_row += buildingInfo.m_cellWidth - width_A;
 
                     if (Debugger.Enabled)
                         Debugger.LogFormat("SIZEPREF-SPAWN: name={0} cellW={1} reqLotW_A={2} num25_row={3} num15={4} num16={5}",
@@ -672,62 +680,65 @@ namespace BuildingThemes.HarmonyPatches.ZoneBlockPatch
 
                 if (buildingInfo != null)
                 {
-                    // If the prefab is shallower than requested, shrink the plot so no land is wasted.
-                    if (buildingInfo.GetWidth() == width && buildingInfo.GetLength() != length)
+                    if (!BuildingThemesManager.instance.GetDistrictUseVanillaFootprint(district))
                     {
-                        float biggestPropPosZ = 0;
-                        if (buildingInfo.m_props != null)
+                        // If the prefab is shallower than requested, shrink the plot so no land is wasted.
+                        if (buildingInfo.GetWidth() == width && buildingInfo.GetLength() != length)
                         {
-                            foreach (var prop in buildingInfo.m_props)
+                            float biggestPropPosZ = 0;
+                            if (buildingInfo.m_props != null)
                             {
-                                if (prop == null) continue;
-                                biggestPropPosZ = Mathf.Max(biggestPropPosZ,
-                                    buildingInfo.m_expandFrontYard ? prop.m_position.z : -prop.m_position.z);
+                                foreach (var prop in buildingInfo.m_props)
+                                {
+                                    if (prop == null) continue;
+                                    biggestPropPosZ = Mathf.Max(biggestPropPosZ,
+                                        buildingInfo.m_expandFrontYard ? prop.m_position.z : -prop.m_position.z);
+                                }
                             }
+
+                            float occupiedExtraSpace = biggestPropPosZ - buildingInfo.GetLength() * 4;
+                            if (occupiedExtraSpace <= 0)
+                            {
+                                length = buildingInfo.GetLength();
+                            }
+                            else
+                            {
+                                int newLength = buildingInfo.GetLength() + Mathf.CeilToInt(occupiedExtraSpace / 8);
+                                length = Mathf.Min(length, newLength);
+                            }
+                            vector6 = m_position + VectorUtils.X_Y(
+                                ((float)length * 0.5f - 4f) * xDirection +
+                                ((float)num25_row * 0.5f + (float)spawnpointRow - 10f) * zDirection);
+                        }
+                        else if (buildingInfo.GetLength() == width && buildingInfo.GetWidth() != length)
+                        {
+                            length = buildingInfo.GetWidth();
+                            vector6 = m_position + VectorUtils.X_Y(
+                                ((float)length * 0.5f - 4f) * xDirection +
+                                ((float)num25_row * 0.5f + (float)spawnpointRow - 10f) * zDirection);
                         }
 
-                        float occupiedExtraSpace = biggestPropPosZ - buildingInfo.GetLength() * 4;
-                        if (occupiedExtraSpace <= 0)
+                        // When the building is narrower than the lot we searched, left-align it
+                        // at the lot edge instead of centering it (which causes visual gaps on
+                        // both sides). num25_row encodes the lot as 2*leftCol + lotWidth; subtracting
+                        // the width difference shifts the center left so the building starts at leftCol.
+                        if (buildingInfo.m_cellWidth < width)
                         {
-                            length = buildingInfo.GetLength();
+                            int old25 = num25_row;
+                            num25_row += buildingInfo.m_cellWidth - width;
+                            width = buildingInfo.m_cellWidth;
+                            vector6 = m_position + VectorUtils.X_Y(
+                                ((float)length * 0.5f - 4f) * xDirection +
+                                ((float)num25_row * 0.5f + (float)spawnpointRow - 10f) * zDirection);
+                            if (Debugger.Enabled)
+                                Debugger.LogFormat("WIDTH-FIX: cellW={0} old_num25={1} new_num25={2} num15={3} num16={4}",
+                                    buildingInfo.m_cellWidth, old25, num25_row, num15, num16);
                         }
-                        else
+                        else if (Debugger.Enabled)
                         {
-                            int newLength = buildingInfo.GetLength() + Mathf.CeilToInt(occupiedExtraSpace / 8);
-                            length = Mathf.Min(length, newLength);
+                            Debugger.LogFormat("WIDTH-FIX: no fix needed cellW={0} == width={1}",
+                                buildingInfo.m_cellWidth, width);
                         }
-                        vector6 = m_position + VectorUtils.X_Y(
-                            ((float)length * 0.5f - 4f) * xDirection +
-                            ((float)num25_row * 0.5f + (float)spawnpointRow - 10f) * zDirection);
-                    }
-                    else if (buildingInfo.GetLength() == width && buildingInfo.GetWidth() != length)
-                    {
-                        length = buildingInfo.GetWidth();
-                        vector6 = m_position + VectorUtils.X_Y(
-                            ((float)length * 0.5f - 4f) * xDirection +
-                            ((float)num25_row * 0.5f + (float)spawnpointRow - 10f) * zDirection);
-                    }
-
-                    // When the building is narrower than the lot we searched, left-align it
-                    // at the lot edge instead of centering it (which causes visual gaps on
-                    // both sides). num25_row encodes the lot as 2*leftCol + lotWidth; subtracting
-                    // the width difference shifts the center left so the building starts at leftCol.
-                    if (buildingInfo.m_cellWidth < width)
-                    {
-                        int old25 = num25_row;
-                        num25_row += buildingInfo.m_cellWidth - width;
-                        width = buildingInfo.m_cellWidth;
-                        vector6 = m_position + VectorUtils.X_Y(
-                            ((float)length * 0.5f - 4f) * xDirection +
-                            ((float)num25_row * 0.5f + (float)spawnpointRow - 10f) * zDirection);
-                        if (Debugger.Enabled)
-                            Debugger.LogFormat("WIDTH-FIX: cellW={0} old_num25={1} new_num25={2} num15={3} num16={4}",
-                                buildingInfo.m_cellWidth, old25, num25_row, num15, num16);
-                    }
-                    else if (Debugger.Enabled)
-                    {
-                        Debugger.LogFormat("WIDTH-FIX: no fix needed cellW={0} == width={1}",
-                            buildingInfo.m_cellWidth, width);
                     }
 
                     if (Debugger.Enabled)

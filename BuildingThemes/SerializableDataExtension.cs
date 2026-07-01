@@ -167,6 +167,7 @@ namespace BuildingThemes
                         preferElectricity       = themesManager.GetDistrictPreferElectricity(i),
                         preferAdjacent          = themesManager.GetDistrictPreferAdjacent(i),
                         enforceSpecialization   = themesManager.GetDistrictEnforceSpecialization(i),
+                        useVanillaFootprint    = themesManager.GetDistrictUseVanillaFootprint(i),
                         residentialSizePref = (int)themesManager.GetDistrictSizePreference(i, ItemClass.Service.Residential),
                         commercialSizePref  = (int)themesManager.GetDistrictSizePreference(i, ItemClass.Service.Commercial),
                         industrialSizePref  = (int)themesManager.GetDistrictSizePreference(i, ItemClass.Service.Industrial),
@@ -277,6 +278,7 @@ namespace BuildingThemes
                 buildingThemesManager.SetDistrictPreferElectricity(district.id, district.preferElectricity);
                 buildingThemesManager.SetDistrictPreferAdjacent(district.id, district.preferAdjacent);
                 buildingThemesManager.SetDistrictEnforceSpecialization(district.id, district.enforceSpecialization);
+                buildingThemesManager.SetDistrictUseVanillaFootprint(district.id, district.useVanillaFootprint);
 
                 // Size preferences added in version 3; -1 means not saved → keep default
                 if (configuration.version >= 3)
@@ -312,9 +314,10 @@ namespace BuildingThemes
         // version 5 adds enforceSpecialization per district.
         // version 6 adds preferAdjacent per district.
         // version 7 adds themeTags per district (disambiguates same-named themes).
+        // version 8 adds useVanillaFootprint per district.
         // Old saves deserialise version as 0 — those fields are ignored on load.
         [System.Xml.Serialization.XmlAttribute("version")]
-        public int version = 7;
+        public int version = 8;
 
         public class District
         {
@@ -340,6 +343,8 @@ namespace BuildingThemes
             public bool enforceSpecialization = false;
             // added in version 6; defaults to false for older saves
             public bool preferAdjacent = false;
+            // added in version 8; defaults to false for older saves
+            public bool useVanillaFootprint = false;
         }
 
         public List<District> Districts = new List<District>();

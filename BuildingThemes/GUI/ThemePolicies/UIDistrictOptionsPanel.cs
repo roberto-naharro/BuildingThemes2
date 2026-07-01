@@ -19,6 +19,7 @@ namespace BuildingThemes.GUI
         private UICheckBox m_enforceSpecializationCheck;
         private UICheckBox m_preferElectricityCheck;
         private UICheckBox m_preferAdjacentCheck;
+        private UICheckBox m_useVanillaFootprintCheck;
 
         // Size-preference controls
         private UIDropDown m_resSizePref;
@@ -222,6 +223,33 @@ namespace BuildingThemes.GUI
             };
             y += CHK_H + ROW_GAP;
 
+            // ── Vanilla footprint (full zone area) ────────────────────────────
+            m_useVanillaFootprintCheck = ThemePolicyTab.CreateCheckBox(this);
+            m_useVanillaFootprintCheck.width            = CW;
+            m_useVanillaFootprintCheck.relativePosition = new Vector3(X, y);
+            m_useVanillaFootprintCheck.text             = "Allow smaller building models to occupy larger lots (original game behavior)";
+            m_useVanillaFootprintCheck.tooltip =
+                "When enabled: if no building model exactly matches the zone size, the\n" +
+                "game selects a slightly smaller model as a substitute — but the spawned\n" +
+                "building still occupies the full zone area. This is the original game logic.\n" +
+                "\n" +
+                "When disabled (default): the plot shrinks to the model's actual dimensions;\n" +
+                "the remaining space is left unoccupied and available for other buildings.\n" +
+                "This is Building Themes 2's behaviour — more land-efficient, but may leave\n" +
+                "narrow gaps that are difficult to fill later.\n" +
+                "\n" +
+                "For example: a 3x3 model placed in a 3x4 zone. Enabled -> fills all\n" +
+                "4 cells (model stays 3x3, the extra 1x3 becomes a yard). Disabled ->\n" +
+                "occupies only 3 cells, leaving a 1x3 strip that other buildings can\n" +
+                "later grow into.";
+            m_useVanillaFootprintCheck.eventCheckChanged += (c, val) =>
+            {
+                if (_updating) return;
+                byte districtId = GetDistrictId();
+                BuildingThemesManager.instance.SetDistrictUseVanillaFootprint(districtId, val);
+            };
+            y += CHK_H + ROW_GAP;
+
             // ── Size preference section ───────────────────────────────────────
             AddLabel(X, y, CW, LBL_H, TS, Localization.Get("DISTRICT_SIZE_PREF_LABEL"));
             y += LBL_H + SEC_GAP;
@@ -386,6 +414,15 @@ namespace BuildingThemes.GUI
                     bool prefAdj = BuildingThemesManager.instance.GetDistrictPreferAdjacent(districtId);
                     if (m_preferAdjacentCheck.isChecked != prefAdj)
                         m_preferAdjacentCheck.isChecked = prefAdj;
+                }
+
+                if (m_useVanillaFootprintCheck != null)
+                {
+                    m_useVanillaFootprintCheck.isEnabled = managed;
+                    m_useVanillaFootprintCheck.opacity   = managed ? 1f : 0.5f;
+                    bool vFoot = BuildingThemesManager.instance.GetDistrictUseVanillaFootprint(districtId);
+                    if (m_useVanillaFootprintCheck.isChecked != vFoot)
+                        m_useVanillaFootprintCheck.isChecked = vFoot;
                 }
 
                 SyncSizeDrop(m_resSizePref, managed, BuildingThemesManager.instance.GetDistrictSizePreference(districtId, ItemClass.Service.Residential));

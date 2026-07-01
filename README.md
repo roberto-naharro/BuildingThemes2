@@ -221,9 +221,12 @@ equal or smaller length than the Level 1.
 
 Example: a 2×3 L1 Low Residential can upgrade to a 2×3, 2×2, or 2×1 L2.
 
-If a building is shorter than the plot, the mod shrinks the plot to the building's actual
-footprint (unless props or trees occupy the extra space). This enables tight layouts like
-the UK Terraced Housing theme.
+By default, when a building model is smaller than the zone, the mod shrinks the plot to
+the model's actual footprint (unless props or trees occupy the extra space). This enables
+tight layouts like the UK Terraced Housing theme. To restore the original game behaviour —
+where slightly smaller models can still be selected, and the spawned building always fills
+the full zone area — enable the **Allow smaller building models to occupy larger lots**
+option in District Options.
 
 **Footprint coverage:** the game generates zone lots in many sizes (1×1, 1×2, 2×2, 2×3,
 2×4, corner lots, and so on). Your theme only needs to cover the sizes you actually want,
@@ -258,6 +261,7 @@ Open via the **District Options** button in the Themes tab.
 | ↳ Also remove non-specialized buildings | Sub-option (only active when auto-bulldoze is on): also removes themed buildings whose sub-service does not match the district's active specialization (e.g. generic industry in a farming district). Use this to fully transition a district to its specialization. Has no effect when no specialization policy is active. |
 | Prefer zones with electricity | Only spawn new buildings in zone cells that are already connected to the electricity grid. See [Prefer Zones With Electricity](#prefer-zones-with-electricity) below. |
 | Cluster against existing buildings (wall-to-wall) | Force new buildings to spawn next to existing ones and slide them along the road so their walls touch, closing the small mesh-vs-cell gaps you'd otherwise see between buildings. See [Cluster Against Existing Buildings](#cluster-against-existing-buildings-wall-to-wall) below. |
+| Allow smaller building models to occupy larger lots (vanilla footprint) | When enabled, slightly smaller models can still be selected, and the spawned building fills the full zone area — matching original game behavior. When disabled (default), the plot shrinks to the model's actual size, leaving remaining space for other buildings. See [How Spawning Works](#how-spawning-works). |
 | Level behavior | What happens when a building levels up but the theme has no building for that level: **Vanilla fallback** (default) or **Strict** (freeze upgrades) |
 | Missing asset handling | Per-district override of the global missing-asset mode |
 | Size preference (4 dropdowns) | Bias spawning toward a particular footprint size or height for each zone type: see [Size Preference](#size-preference) |

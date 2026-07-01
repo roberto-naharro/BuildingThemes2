@@ -161,6 +161,21 @@ namespace BuildingThemes
             AutoBulldozeService.ResetCursor();
         }
 
+        public bool GetDistrictUseVanillaFootprint(byte districtId)
+        {
+            var info = districtThemeInfos[districtId];
+            if (info != null) return info.useVanillaFootprint;
+            if (districtId != 0) { var c = districtThemeInfos[0]; if (c != null) return c.useVanillaFootprint; }
+            return false;
+        }
+
+        public void SetDistrictUseVanillaFootprint(byte districtId, bool enabled)
+        {
+            var info = districtThemeInfos[districtId];
+            if (info == null || info.useVanillaFootprint == enabled) return;
+            info.useVanillaFootprint = enabled;
+        }
+
         public SizePreference GetDistrictSizePreference(byte districtId, ItemClass.Service service)
         {
             var info = districtThemeInfos[districtId];
@@ -265,6 +280,9 @@ namespace BuildingThemes
             /// e.g. a generic industrial building in a farming-specialised district gets removed.
             /// </summary>
             public bool enforceSpecialization = false;
+
+            /// <summary>When true, buildings occupy the full zone area (vanilla footprint upconversion).</summary>
+            public bool useVanillaFootprint = false;
 
             // Size preference per zone type
             public SizePreference residentialSizePref = SizePreference.Default;
