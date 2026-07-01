@@ -4,6 +4,18 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.21.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.20.0...v2.21.0) (2026-07-01)
+
+
+### Features
+
+* add toggle to restore vanilla building footprint behaviour ([#38](https://github.com/roberto-naharro/BuildingThemes2/issues/38)) ([128ea83](https://github.com/roberto-naharro/BuildingThemes2/commit/128ea83ba5c9e86a5c7de79512e2535853f1a682))
+
+
+### Bug Fixes
+
+* **districts:** polish vanilla-footprint option (log, wording, dead code) ([3d795e3](https://github.com/roberto-naharro/BuildingThemes2/commit/3d795e3959e52111333291d447b96ef0452d7b6e))
+
 ## [2.20.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.19.1...v2.20.0) (2026-06-17)
 
 
