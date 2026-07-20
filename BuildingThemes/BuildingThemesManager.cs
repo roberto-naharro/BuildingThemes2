@@ -303,7 +303,32 @@ namespace BuildingThemes
             public readonly Dictionary<ushort, ushort> upgradeBuildings = new Dictionary<ushort, ushort>();
         }
 
-        private const string userConfigPath = "BuildingThemes.xml";
+        private const string configFileName = "BuildingThemes.xml";
+
+        // Primary, always-writable location: the CS1 user-data folder
+        // (%LOCALAPPDATA%\Colossal Order\Cities_Skylines on Windows). Survives moving/reinstalling
+        // the game and is never blocked by Program Files permissions. Read first, written always.
+        internal static string UserDataConfigPath
+        {
+            get
+            {
+                try { return Path.Combine(ColossalFramework.IO.DataLocation.localApplicationData, configFileName); }
+                catch { return null; }
+            }
+        }
+
+        // Secondary, portable location: the game's working directory (the install folder). Handy to
+        // keep a copy next to the game, but may be non-writable when the game lives under Program
+        // Files. Read as a fallback, written best-effort. This was the only location before.
+        internal static string GameFolderConfigPath
+        {
+            get
+            {
+                try { return Path.GetFullPath(configFileName); }
+                catch { return configFileName; }
+            }
+        }
+
         private Configuration _configuration;
         internal Configuration Configuration
         {
@@ -311,43 +336,56 @@ namespace BuildingThemes
             {
                 if (_configuration == null)
                 {
-                    string fullPath;
-                    try { fullPath = Path.GetFullPath(userConfigPath); }
-                    catch { fullPath = userConfigPath; }
+                    Debugger.xmlCorrupt = false;
+                    string loadedFrom = null;
 
-                    try
+                    // Read priority: user-data folder first, then the game folder. A parse error on
+                    // one location does not stop us from trying the other; we only treat the config
+                    // as corrupt if a file existed somewhere but none could be read.
+                    bool sawParseError = false;
+                    foreach (var path in new[] { UserDataConfigPath, GameFolderConfigPath })
                     {
-                        _configuration = Configuration.Deserialize(userConfigPath);
-                        Debugger.xmlCorrupt = false;
+                        if (path == null || !File.Exists(path)) continue;
+                        try
+                        {
+                            var cfg = Configuration.Deserialize(path);
+                            if (cfg != null)
+                            {
+                                _configuration = cfg;
+                                loadedFrom = path;
+                                break;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            sawParseError = true;
+                            Debugger.LogError("[BT2:Persistence] Configuration load FAILED from: " + path +
+                                " — the file may be corrupt. Trying the other location if present.");
+                            Debugger.LogException(e);
+                        }
+                    }
 
-                        // Always-on so we can compare the LOAD path/count against the SAVE path
+                    if (_configuration != null)
+                    {
+                        // Always-on so the LOAD path/count can be compared against the SAVE paths
                         // logged by SaveConfig — a mismatch explains "my theme didn't save".
-                        if (_configuration != null)
-                        {
-                            Debugger.LogAlways("[BT2:Persistence] Loaded " + _configuration.themes.Count +
-                                " theme(s) from: " + fullPath);
-                        }
-                        else
-                        {
-                            Debugger.LogAlways("[BT2:Persistence] No existing config file at: " + fullPath +
-                                " — a new one will be created here on the first save.");
-                        }
+                        Debugger.LogAlways("[BT2:Persistence] Loaded " + _configuration.themes.Count +
+                            " theme(s) from: " + loadedFrom);
                     }
-                    catch (Exception e)
+                    else if (sawParseError)
                     {
+                        // A file existed but couldn't be parsed anywhere — don't overwrite it blindly.
                         Debugger.xmlCorrupt = true;
-                        Debugger.LogError("[BT2:Persistence] Configuration load FAILED from: " + fullPath +
-                            " — the file may be corrupt. Check Player.log for details.");
-                        Debugger.LogException(e);
                     }
-
-                    if (_configuration == null && !Debugger.xmlCorrupt)
+                    else
                     {
+                        // No config file in either location — create a fresh one (writes to both).
+                        Debugger.LogAlways("[BT2:Persistence] No existing config file found (checked user-data folder and game folder) — creating a new one.");
                         _configuration = new Configuration();
                         try { SaveConfig(); }
                         catch (Exception e)
                         {
-                            Debugger.LogError("Could not create BuildingThemes.xml at: " + fullPath);
+                            Debugger.LogError("[BT2:Persistence] Could not create " + configFileName + ".");
                             Debugger.LogException(e);
                         }
                     }
@@ -361,27 +399,42 @@ namespace BuildingThemes
         {
             if (_configuration == null) return;
 
-            // Resolve the absolute target so the log shows exactly where the file goes.
-            // userConfigPath is relative, so it depends on the game's working directory.
-            string fullPath;
-            try { fullPath = Path.GetFullPath(userConfigPath); }
-            catch { fullPath = userConfigPath; }
+            // Write to BOTH locations: the always-writable user-data folder (primary) and the game
+            // folder (portable copy next to the install). A failure on one is tolerated as long as
+            // the other succeeds; only if BOTH fail do we warn loudly, because that is the real
+            // "my custom themes will be lost on reload" case.
+            int themeCount = _configuration.themes.Count;
+            bool anySaved = false;
 
-            try
+            foreach (var path in new[] { UserDataConfigPath, GameFolderConfigPath })
             {
-                Configuration.Serialize(userConfigPath, _configuration);
-                Debugger.LogAlways("[BT2:Persistence] Saved " + _configuration.themes.Count +
-                    " theme(s) to: " + fullPath);
+                if (path == null) continue;
+                try
+                {
+                    var dir = Path.GetDirectoryName(path);
+                    if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                        Directory.CreateDirectory(dir);
+
+                    Configuration.Serialize(path, _configuration);
+                    Debugger.LogAlways("[BT2:Persistence] Saved " + themeCount + " theme(s) to: " + path);
+                    anySaved = true;
+                }
+                catch (Exception e)
+                {
+                    // Non-fatal: log the failed location (often the game folder under Program Files)
+                    // but keep going — the other location may still succeed.
+                    Debugger.LogError("[BT2:Persistence] Could not save themes to: " + path +
+                        " — this location is not writable. Trying the other location.");
+                    Debugger.LogException(e);
+                }
             }
-            catch (Exception e)
+
+            if (!anySaved)
             {
-                // Never let a save failure propagate into the UI update loop. Log it loudly
-                // (always-on) so affected users can share their log: this is the smoking gun
-                // for "my custom theme disappears after restarting the game".
-                Debugger.LogError("[BT2:Persistence] FAILED to save themes to: " + fullPath +
-                    " — your custom themes will be lost on reload. Most likely the game's " +
-                    "working directory is not writable. Exception follows.");
-                Debugger.LogException(e);
+                // Both locations failed — this is the smoking gun for lost themes after a restart.
+                Debugger.LogError("[BT2:Persistence] FAILED to save themes to ANY location — your " +
+                    "custom themes will be lost on reload. Both the user-data folder and the game " +
+                    "folder were unwritable.");
             }
         }
 

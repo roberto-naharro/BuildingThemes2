@@ -22,10 +22,11 @@ namespace BuildingThemes
 
             Debugger.Log("ON_CREATED");
             Debugger.Log("Initializing Mod...");
-            Debugger.LogFormat("Version={0} HarmonyId={1} ConfigPath={2}",
+            Debugger.LogFormat("Version={0} HarmonyId={1} ConfigPath(user-data)={2} ConfigPath(game)={3}",
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version,
                 BuildingThemesMod.HarmonyId,
-                System.IO.Path.GetFullPath("BuildingThemes.xml"));
+                BuildingThemesManager.UserDataConfigPath,
+                BuildingThemesManager.GameFolderConfigPath);
 
             try
             {
