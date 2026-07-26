@@ -618,7 +618,17 @@ your playset and give you IDs to re-enable them.
 
 ---
 
-## Troubleshooting: Buildings Not Spawning
+## Troubleshooting
+
+Jump to the symptom that matches:
+
+- [Buildings not spawning at all](#buildings-not-spawning-at-all)
+- [Non-theme (vanilla) buildings spawning in a themed district](#non-theme-vanilla-buildings-spawning-in-a-themed-district)
+- [A theme building shows as "missing" or "(Not Loaded)"](#a-theme-building-shows-as-missing-or-not-loaded)
+- [Growth stops at a certain density, leaving holes](#growth-stops-at-a-certain-density-leaving-holes)
+- [Game shows the wrong display language](#game-shows-the-wrong-display-language)
+
+### Buildings not spawning at all
 
 Work through this list in order:
 
@@ -656,6 +666,68 @@ to the theme to keep it.
 **7. Run Spawn Diagnostics**
 District policy panel → Themes tab → **District Options** → **Spawn Diagnostics**. Shows
 accepted/rejected counts and lists missing assets by name.
+
+### Non-theme (vanilla) buildings spawning in a themed district
+
+If buildings that are not in your theme keep appearing inside a themed district, this is the
+mod's default gap-filling rather than a bug. By default every district uses **Fill with
+vanilla** (missing asset mode) and **Vanilla fallback** (level behavior). When your theme has
+no building for the exact combination the game is asking for, meaning zone type, footprint
+size, and level all together, the game fills that lot with an ordinary building instead of
+leaving it empty.
+
+A common surprise: matching the footprint alone is not enough. A 4x4 lot at Level 3 needs a
+theme building that is both 4x4 **and** Level 3 for that zone type. The same area at a
+different level still counts as uncovered, so a vanilla building takes the slot.
+
+To make a district spawn only its own theme buildings, open the district Themes tab, then
+**District Options**, and set:
+
+- **Missing asset mode** to **Skip**
+- **Level behavior** to **Strict**
+
+With those, no vanilla buildings are added to the pool. The trade off is that any size or
+level your theme does not cover stays empty, which is why a strict theme with gaps can look
+like "nothing spawns". Make sure your theme includes buildings for every level (1 up to the
+maximum) and every lot size you zone. Use **Spawn Diagnostics** to see which footprint and
+level pools are currently empty.
+
+### A theme building shows as "missing" or "(Not Loaded)"
+
+Yellow text or a "missing" count on a building means its prefab is not loaded in the current
+session, so the mod cannot spawn it. Common causes:
+
+- The workshop asset is unsubscribed or disabled in your playset. Use **Workshop
+  Dependencies → Subscribe Missing** to restore it.
+- A base-game or DLC asset was skipped by another mod. For example, some players use Loading
+  Screen Mod to skip the base-game **Game Store** and **Future Store** commercial buildings,
+  which have a known demand bug. If you skipped an asset on purpose, the warning is expected.
+
+This is harmless. The spawner simply skips any building that is not loaded and uses the rest
+of the theme. If you want a clean list, copy the theme and remove the entries you do not use.
+
+### Growth stops at a certain density, leaving holes
+
+Two things can cause this:
+
+- **Demand.** Spawning is demand-driven. Empty zoned tiles fill only as residential,
+  commercial, industrial, or office demand grows, so partial filling is normal vanilla
+  behavior. No mod fills every tile regardless of demand.
+- **Cluster (wall-to-wall).** If the district has **Cluster against existing buildings
+  (wall-to-wall)** enabled, the mod skips lots with no neighbouring building, so once the
+  adjacent lots are taken, isolated gaps stop filling. Turn that option off in **District
+  Options** to let all lots fill.
+
+If specific lot sizes never fill even with demand and clustering off, your theme likely has
+no building for those sizes. Set **Missing asset mode** to **Fill with vanilla** so the gaps
+are filled, or add matching buildings to the theme.
+
+### Game shows the wrong display language
+
+Building Themes 2 does not change the game's display language. It only localizes its own
+text and never calls the game's language API. If your game shows the wrong language with a
+large mod list, it is another mod resetting the locale on load. Disable your localization and
+namelist mods one at a time to find the one responsible.
 
 ---
 
