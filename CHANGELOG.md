@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.2](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.22.1...v2.22.2) (2026-11-26)
+
+
+### Bug Fixes
+
+* pin Workshop deploy runner to Ubuntu 24.04 ([4cd6c17](https://github.com/roberto-naharro/BuildingThemes2/commit/4cd6c17385b1b2caa1fedb8713eaa1f1e2a15953))
+
 ## [2.22.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.22.0...v2.22.1) (2026-11-26)
 
 
