@@ -27,7 +27,7 @@ namespace BuildingThemes
             return "Expansion DLC";
         }
 
-        // Hardcoded CCP names for all 29 packs (extracted from game DLL strings).
+        // Hardcoded CCP names for all 31 packs (extracted from game DLL strings).
         // For packs that also have locale keys we try locale first for localization support.
         private static readonly Dictionary<SteamHelper.ModderPackBitMask, string> s_packNames =
             new Dictionary<SteamHelper.ModderPackBitMask, string>
@@ -61,6 +61,8 @@ namespace BuildingThemes
             { SteamHelper.ModderPackBitMask.Pack27, "Maps 4"                 },
             { SteamHelper.ModderPackBitMask.Pack28, "Iconic Brutalism"       },
             { SteamHelper.ModderPackBitMask.Pack29, "Renewed History"        },
+            { SteamHelper.ModderPackBitMask.Pack30, "Holiday Getaways"       },
+            { SteamHelper.ModderPackBitMask.Pack31, "Mansions and Manors"    },
         };
 
         // Locale keys for packs that have in-game locale strings (confirmed via monodis on
@@ -81,6 +83,7 @@ namespace BuildingThemes
             { SteamHelper.ModderPackBitMask.Pack24, "STYLES_MODDERPACKTWENTYFOUR"},
             { SteamHelper.ModderPackBitMask.Pack25, "STYLES_MODDERPACKTWENTYFIVE"},
             { SteamHelper.ModderPackBitMask.Pack26, "STYLES_MODDERPACKTWENTYSIX" },
+            { SteamHelper.ModderPackBitMask.Pack31, "STYLES_MODDERPACKTHIRTYONE" },
         };
 
         public static string GetModderPackName(SteamHelper.ModderPackBitMask mask)
@@ -121,6 +124,7 @@ namespace BuildingThemes
             { DistrictStyle.kModderPack24StyleName,     "STYLES_MODDERPACKTWENTYFOUR"},
             { DistrictStyle.kModderPack25StyleName,     "STYLES_MODDERPACKTWENTYFIVE"},
             { DistrictStyle.kModderPack26StyleName,     "STYLES_MODDERPACKTWENTYSIX" },
+            { DistrictStyle.kModderPack31StyleName,     "STYLES_MODDERPACKTHIRTYONE" },
         };
 
         /// <summary>

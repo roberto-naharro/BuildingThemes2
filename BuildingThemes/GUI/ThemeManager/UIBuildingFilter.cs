@@ -71,11 +71,13 @@ namespace BuildingThemes.GUI
             var ownedExp  = SteamHelper.GetOwnedExpansionMask();
             var ownedPack = SteamHelper.GetOwnedModderPackMask();
 
-            // Collect unique DLC entries that have buildings in this theme.
-            var seen    = new HashSet<ulong>();
-            var entries = new List<DlcEntry>();
+            // Collect unique DLC entries that have buildings in this theme. Expansions and
+            // modder packs are deduplicated in separate sets: the modder pack mask is 64 bits
+            // wide since game 1.21.2 (Pack31 is bit 32), so it cannot be packed into an int.
+            var seenExp  = new HashSet<SteamHelper.ExpansionBitMask>();
+            var seenPack = new HashSet<SteamHelper.ModderPackBitMask>();
+            var entries  = new List<DlcEntry>();
             entries.Add(new DlcEntry()); // index 0 = "All DLC"
-            seen.Add(0UL);
 
             foreach (BuildingItem item in buildings)
             {
@@ -86,15 +88,13 @@ namespace BuildingThemes.GUI
 
                 if (exp != SteamHelper.ExpansionBitMask.None && (ownedExp & exp) != SteamHelper.ExpansionBitMask.None)
                 {
-                    ulong key = (ulong)(int)exp;
-                    if (seen.Add(key))
+                    if (seenExp.Add(exp))
                         entries.Add(new DlcEntry { expansion = exp, modderPack = SteamHelper.ModderPackBitMask.None });
                 }
 
                 if (pack != SteamHelper.ModderPackBitMask.None && (ownedPack & pack) != SteamHelper.ModderPackBitMask.None)
                 {
-                    ulong key = 0x1_0000_0000UL + (ulong)(int)pack;
-                    if (seen.Add(key))
+                    if (seenPack.Add(pack))
                         entries.Add(new DlcEntry { expansion = SteamHelper.ExpansionBitMask.None, modderPack = pack });
                 }
             }

@@ -587,7 +587,7 @@ give the theme a name that fits your workflow.
 
 ## Compatibility
 
-**Compatible with Cities: Skylines 1.21.1-f9** (and later 1.x releases).
+**Compatible with Cities: Skylines 1.21.2-f5** (the Estates and Escapes update).
 
 **Not compatible with:**
 

@@ -2,7 +2,7 @@
 
 Apply building themes to districts — only buildings in the selected themes will grow in a zone. Subscribe to theme mods from the Workshop, or create and manage your own themes entirely in-game.
 
-[b]Building Themes 2[/b] is a community-maintained fork of the original [b]Building Themes[/b] by [url=https://github.com/boformer]boformer[/url], updated for Cities: Skylines 1.21.1-f9 with Harmony 2.x.
+[b]Building Themes 2[/b] is a community-maintained fork of the original [b]Building Themes[/b] by [url=https://github.com/boformer]boformer[/url], updated for Cities: Skylines 1.21.2-f5 with Harmony 2.x.
 
 [b]► Full documentation, troubleshooting & changelog:[/b]
 [url=https://github.com/roberto-naharro/BuildingThemes2]github.com/roberto-naharro/BuildingThemes2[/url]
@@ -65,7 +65,7 @@ The mod UI is available in [b]14 languages[/b]: English, German, Spanish, French
 
 [h1]Compatibility[/h1]
 
-Compatible with [b]Cities: Skylines 1.21.1-f9[/b] and later 1.x. Save games from the original Building Themes are [b]fully compatible[/b].
+Compatible with [b]Cities: Skylines 1.21.2-f5[/b] (the Estates and Escapes update). Save games from the original Building Themes are [b]fully compatible[/b].
 
 [b]Not compatible with:[/b]
 [list]
