@@ -4,6 +4,13 @@ All notable changes to Building Themes 2 are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.1](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.22.0...v2.22.1) (2026-11-26)
+
+
+### Bug Fixes
+
+* support game version 1.21.2 (Estates and Escapes) ([52ef440](https://github.com/roberto-naharro/BuildingThemes2/commit/52ef440a43ca1aa970732d9e16104fe2f2911eab)), closes [#48](https://github.com/roberto-naharro/BuildingThemes2/issues/48)
+
 ## [2.22.0](https://github.com/roberto-naharro/BuildingThemes2/compare/v2.21.0...v2.22.0) (2026-07-20)
 
 
